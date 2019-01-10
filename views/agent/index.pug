@@ -1,175 +1,50 @@
 extends layout
 block content
-    //- Page container
-    .gx-container
-        //- Page Sidebar
-        #menu.side-nav.gx-sidebar
-            .navbar-expand-lg
-                //- Sidebar header
-                .sidebar-header
-                    .user-profile
-                        img.user-avatar(alt='Domnic', src='images/userAvatar/domnic-harris.jpg')
-                        .user-detail
-                            h4.user-name
-                                span.dropdown
-                                    a#userAccount.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                                    span.dropdown-menu.dropdown-menu-right(aria-labelledby='userAccount')
-                                        a.dropdown-item(href='javascript:void(0)')
-                                            i.zmdi.zmdi-account.zmdi-hc-fw.mr-2
-                                        a.dropdown-item(href='javascript:void(0)')
-                                            i.zmdi.zmdi-settings.zmdi-hc-fw.mr-2
-                                        a.dropdown-item(href='javascript:void(0)')
-                                            i.zmdi.zmdi-sign-in.zmdi-hc-fw.mr-2
-                //- /sidebar header
-                //- Main navigation
-                #main-menu.main-menu.navbar-collapse.collapse
-                    ul.nav-menu
-                        li.nav-header
-                            span.nav-text Main
-                        li.menu
-                            a(href='javascript:void(0)')
-                                i.zmdi.zmdi-view-dashboard.zmdi-hc-fw
-                                span.nav-text Dashboard
-                            ul.sub-menu
-                                li
-                                    a(href='index-2.html')
-                                        span.nav-text Default
-                                li
-                                    a(href='ecommerce.html')
-                                        span.nav-text eCommerce
-                                li
-                                    a(href='news.html')
-                                        span.nav-text News
-                                li
-                                    a(href='intranet.html')
-                                        span.nav-text Intranet
-                //- /main navigation
-        //- /page sidebar
-        //- Main Container
-        .gx-main-container
-            //- Main Header
-            header.main-header
-                .gx-toolbar
-                    .sidebar-mobile-menu.d-block.d-lg-none
-                        a.gx-menu-icon.menu-toggle(href='#menu')
-                            span.menu-icon
-                    a.site-logo(href='index-2.html')
-                        img(src='images/logo.png', alt='Jumbo', title='Jumbo')
-                    .search-bar.right-side-icon.bg-transparent.d-none.d-sm-block
-                        .form-group
-                            input.form-control.border-0(placeholder='', value='', type='search')
-                            button.search-icon
-                                i.zmdi.zmdi-search.zmdi-hc-lg
-                    ul.quick-menu.header-notifications.ml-auto
-                        li.nav-searchbox.dropdown.d-inline-block.d-sm-none
-                            a.d-inline-block.icon-btn(href='javascript:void(0)', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                                i.zmdi.zmdi-search.zmdi-hc-fw
-                            .p-0.dropdown-menu.dropdown-menu-right.search-bar.right-side-icon.search-dropdown(aria-hidden='true')
-                                .form-group
-                                    input.form-control.border-0(placeholder='', value='', type='search')
-                                    button.search-icon
-                                        i.zmdi.zmdi-search.zmdi-hc-lg
-                        li.dropdown
-                            a.d-inline-block(href='javascript:void(0)', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
-                                i.zmdi.zmdi-notifications-active.icons-alert.animated.infinite.wobble
-                            .dropdown-menu.dropdown-menu-right(role='menu', aria-hidden='true')
-                                .gx-card-header.d-flex.align-items-center
-                                    .mr-auto
-                                        h3.card-heading Notifications
-                                .dropdown-menu-perfectscrollbar
-                                    .messages-list
-                                        ul.list-unstyled
-                                            li.media
-                                                img.size-40.mr-2.rounded-circle(alt='stella-johnson', src='images/userAvatar/stella-johnson.jpg')
-                                                .media-body.align-self-center
-                                                    p.sub-heading.mb-0
-                                                    a.gx-btn.gx-flat-btn.gx-btn-xs.mb-0(href='javascript:void(0)')
-                                                        i.zmdi.zmdi-thumb-up.text-blue.zmdi-hc-fw
-                                                    span.meta-date
-                                                        small 4:10 PM
-                        li.dropdown
-                            a.d-inline-block(href='javascript:void(0)', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
-                                i.zmdi.zmdi-comment-alt-text.icons-alert.zmdi-hc-fw
-                            .dropdown-menu.dropdown-menu-right(data-placement='bottom-end', data-x-out-of-boundaries='')
-                                .gx-card-header.d-flex.align-items-center
-                                    .mr-auto
-                                        h3.card-heading Messages
-                                .dropdown-menu-perfectscrollbar1
-                                    .messages-list
-                                        ul.list-unstyled
-                                            li.media
-                                                .user-thumb
-                                                    img.rounded-circle.size-40.user-avatar(alt='Domnic Brown', src='images/userAvatar/domnic-brown.jpg')
-                                                    span.badge.badge-danger.rounded-circle 5
-                                                .media-body
-                                                    .d-flex.justify-content-between.align-items-center
-                                                        h5.text-capitalize.user-name.mb-0
-                                                            a(href='javascript:void(0)') Domnic Brown
-                                                        span.meta-date
-                                                            small 6:19 PM
-                                                    p.sub-heading There are many variations of passages of...
-                                                    a.gx-btn.gx-flat-btn.gx-btn-xs.text-muted(href='javascript:void(0)')
-                                                        i.zmdi.zmdi-mail-reply
-                                                        span Reply
-                                                    a.gx-btn.gx-flat-btn.gx-btn-xs.text-muted(href='javascript:void(0)')
-                                                        i.zmdi.zmdi-eye
-                                                        span Read
-                                                        
-            //- /main header
-            //- Main Content
-            .gx-main-content
-                //- gx-wrapper
-                .gx-wrapper
-                    .gx-module.chat-module
-                        #gxChatModuleSidebar.chat-sidenav
-                            .chat-sidenav-main
-                                .chat-sidenav-header
-                                    .chat-user-hd
-                                        .chat-avatar.mr-3
-                                            .chat-avatar-mode
-                                                img.user-avatar.size-50(src='images/userAvatar/domnic-harris.jpg', alt='')
-                                                span.chat-mode.online
-                                        .module-user-info.d-flex.flex-column.justify-content-center
-                                            .module-title
-                                                h5.mb-0 Robert Johnson
-                                            .module-user-detail
-                                                a.text-muted(href='javascript:void(0)') robert@example.com
-                                        a.ml-auto.action-btn
-                                            i.zmdi.zmdi-more-vert
-                                    .search-wrapper
-                                        .search-bar.right-side-icon.bg-transparent
-                                            .form-group
-                                                input.form-control.border-0(placeholder='Search or start new chat', value='', type='search')
-                                                button.search-icon
-                                                    i.zmdi.zmdi-search.zmdi-hc-lg
-                                    ul.nav.tab-link.nav-justified(role='tablist')
-                                        li.nav-item
-                                            a.nav-link.active(data-toggle='tab', href='#chatList', role='tab', aria-controls='chatList', aria-selected='true') Chats
-                                .chat-sidenav-content
-                                    .tab-content
-                                        #chatList.tab-pane.active.ps-custom-scrollbar(style='position: relative;')
-                                            #users-online.chat-user
-                        .chat-module-box
-                            .chat-box
-                                .chat-box-main
-                                    .chat-main
-                                        .chat-list-scroll
-                                            .loader-view.h-100
-                                                i.zmdi.zmdi-comment.s-128.text-muted
-                                                h1.text-muted Select User to start Chat
-                                                a#gxChatModuleSideNav.gx-btn.gx-flat-btn.gx-btn-primary.drawer-btn.d-block.d-lg-none(href='javascript:void(0)')
-                //- /gx-wrapper
-                //- Footer
-                footer.gx-footer
-                    .d-flex.flex-row.justify-content-between
-                        p  Copyright Company Name &copy; 2018
-                //- /footer
-            //- /main content
-        //- /main container
-        //- Theme Options Button
+    //- Main Content
+    .gx-main-content
+        //- gx-wrapper
+        .gx-wrapper
+            .gx-module.chat-module
+                #gxChatModuleSidebar.chat-sidenav
+                    .chat-sidenav-main
+                        .chat-sidenav-header
+                            .chat-user-hd
+                                .chat-avatar.mr-3
+                                    .chat-avatar-mode
+                                        img.user-avatar.size-50(src='images/userAvatar/domnic-harris.jpg', alt='')
+                                        span.chat-mode.online
+                                .module-user-info.d-flex.flex-column.justify-content-center
+                                    .module-title
+                                        h5.mb-0 Robert Johnson
+                                    .module-user-detail
+                                        a.text-muted(href='javascript:void(0)') robert@example.com
+                                a.ml-auto.action-btn
+                                    i.zmdi.zmdi-more-vert
+                            .search-wrapper
+                                .search-bar.right-side-icon.bg-transparent
+                                    .form-group
+                                        input.form-control.border-0(placeholder='Search or start new chat', value='', type='search')
+                                        button.search-icon
+                                            i.zmdi.zmdi-search.zmdi-hc-lg
+                            ul.nav.tab-link.nav-justified(role='tablist')
+                                li.nav-item
+                                    a.nav-link.active(data-toggle='tab', href='#chatList', role='tab', aria-controls='chatList', aria-selected='true') Chats
+                        .chat-sidenav-content
+                            .tab-content
+                                #chatList.tab-pane.active.ps-custom-scrollbar(style='position: relative;')
+                                    #users-online.chat-user
+                .chat-module-box                             
+                    .chat-box !{html}    
+        //- Footer
+        footer.gx-footer
+            .d-flex.flex-row.justify-content-between
+                p  Copyright Company Name &copy; 2018
+       
+
         #colorTheme.theme-option
             a.action-btn(href='javascript:void(0)')
                 i.zmdi.zmdi-settings.zmdi-hc-spin.text-white
-        //- /Theme Options Button
-    //-- /page container
+        
+
+
 
