@@ -1,8 +1,6 @@
 extends layout
-block content
-    //- Main Content
-    .gx-main-content
-        //- gx-wrapper
+block content    
+    .gx-main-content        
         .gx-wrapper
             .gx-module.chat-module
                 #gxChatModuleSidebar.chat-sidenav
@@ -34,14 +32,13 @@ block content
                                 #chatList.tab-pane.active.ps-custom-scrollbar(style='position: relative;')
                                     #users-online.chat-user
                 .chat-module-box                             
-                    .chat-box !{html}    
-        //- Footer
+                    .chat-box !{html}       
         footer.gx-footer
             .d-flex.flex-row.justify-content-between
-                p  Copyright Company Name &copy; 2018
+                p  Copyright EagleChat &copy; 2018
        
 
-        #colorTheme.theme-option
+        //- #colorTheme.theme-option
             a.action-btn(href='javascript:void(0)')
                 i.zmdi.zmdi-settings.zmdi-hc-spin.text-white
         

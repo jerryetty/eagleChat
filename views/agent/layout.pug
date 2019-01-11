@@ -5,40 +5,22 @@ head
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='description', content='EagleChat is a support system that enables students communicate directly with University Support staff in real time')
     meta(name='keywords', content='Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass')
-    title= title
-    //- Site favicon
-    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
-    //- /site favicon
-    //- Font Material stylesheet
-    link(rel='stylesheet', href='fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')
-    //- /font material stylesheet
-    //- Bootstrap stylesheet
-    link(href='css/agent/jumbo-bootstrap.css', rel='stylesheet')
-    //- /bootstrap stylesheet
-    //- Perfect Scrollbar stylesheet
-    link(href='js/utils/perfect-scrollbar/css/perfect-scrollbar.css', rel='stylesheet')
-    //- /perfect scrollbar stylesheet
-    //- Form stylesheet
-    link(href='css/agent/jumbo-forms.css', rel='stylesheet')
-    //- /form stylesheet
-    //- Jumbo-core stylesheet
-    link(href='css/agent/jumbo-core.min.css', rel='stylesheet')
-    //- /jumbo-core stylesheet
-    //- Color-Theme stylesheet
-    link#override-css-id(href='css/agent/theme-dark-indigo.css', rel='stylesheet')
-    //- Color-Theme stylesheet
+    title= title    
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')        
+    link(rel='stylesheet', href='fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')        
+    link(href='css/agent/jumbo-bootstrap.css', rel='stylesheet')        
+    link(href='js/utils/perfect-scrollbar/css/perfect-scrollbar.css', rel='stylesheet')        
+    link(href='css/agent/jumbo-forms.css', rel='stylesheet')        
+    link(href='css/agent/jumbo-core.min.css', rel='stylesheet')        
+    link#override-css-id(href='css/agent/theme-dark-indigo.css', rel='stylesheet')    
 
 .loader-backdrop
-
     .loader
         svg.circular(viewbox='25 25 50 50')
             circle.path(cx='50', cy='50', r='20', fill='none', stroke-width='2', stroke-miterlimit='10')
-
-.gx-container
-    //- Page Sidebar
+.gx-container    
     #menu.side-nav.gx-sidebar
-        .navbar-expand-lg
-            //- Sidebar header
+        .navbar-expand-lg            
             .sidebar-header
                 .user-profile
                     img.user-avatar(alt='Domnic', src='images/userAvatar/domnic-harris.jpg')
@@ -52,42 +34,36 @@ head
                                     a.dropdown-item(href='javascript:void(0)')
                                         i.zmdi.zmdi-settings.zmdi-hc-fw.mr-2
                                     a.dropdown-item(href='javascript:void(0)')
-                                        i.zmdi.zmdi-sign-in.zmdi-hc-fw.mr-2
-            //- /sidebar header
-            //- Main navigation
+                                        i.zmdi.zmdi-sign-in.zmdi-hc-fw.mr-2                        
             #main-menu.main-menu.navbar-collapse.collapse
                 ul.nav-menu
                     li.nav-header
                         span.nav-text Main
                     li.menu.no-arrow
-                        a(href='javascript:void(0)')
+                        a(href='chat')
                             i.zmdi.zmdi-comment.zmdi-hc-fw
                             span.nav-text Chat
                     li.menu.no-arrow
-                        a(href='javascript:void(0)')
+                        a(href='tickets')
                             i.zmdi.zmdi-view-dashboard.zmdi-hc-fw
                             span.nav-text Tickets
                     li.menu.no-arrow
-                        a(href='javascript:void(0)')
+                        a(href='agent')
                             i.zmdi.zmdi-view-dashboard.zmdi-hc-fw
                             span.nav-text Agents
                     li.menu.no-arrow
-                        a(href='javascript:void(0)')
+                        a(href='help')
                             i.zmdi.zmdi-view-dashboard
                             span.nav-text Help
-                                          
-    
-    //- Main Container
-    .gx-main-container
-        //- Main Header
+    .gx-main-container        
         header.main-header
             .gx-toolbar
                 .sidebar-mobile-menu.d-block.d-lg-none
                     a.gx-menu-icon.menu-toggle(href='#menu')
                         span.menu-icon
-                a.site-logo(href='index-2.html')
+                span.site-logo
                     img(src='images/logo.png', alt='Jumbo', title='Jumbo')
-                .search-bar.right-side-icon.bg-transparent.d-none.d-sm-block
+                //- .search-bar.right-side-icon.bg-transparent.d-none.d-sm-block
                     .form-group
                         input.form-control.border-0(placeholder='', value='', type='search')
                         button.search-icon
@@ -146,12 +122,7 @@ head
                                                 a.gx-btn.gx-flat-btn.gx-btn-xs.text-muted(href='javascript:void(0)')
                                                     i.zmdi.zmdi-eye
                                                     span Read
-                                                    
-            //- /main header
-
         block content
-                
-//- Right Sidebar
 #colorSidebar.app-sidebar-content.right-sidebar
     .color-theme
         .color-theme-header
@@ -203,35 +174,15 @@ head
             .material-switch.d-none.d-lg-block
                 input#folded-sidebar(type='checkbox')
                 label.label-default(for='folded-sidebar')
-//- end Right Sidebar
-
-//- Menu Backdrop
 .menu-backdrop.fade
-//- end menu backdrop
 
-
-//- Load JQuery
 script(src='js/utils/jquery/dist/jquery.min.js')
-
-//- Bootstrap JQuery
 script(src='js/utils/bootstrap/dist/js/bootstrap.bundle.min.js')
-
-//- Perfect Scrollbar JQuery
 script(src='js/utils/perfect-scrollbar/dist/perfect-scrollbar.min.js')
-
-//- Big Slide JQuery
 script(src='js/utils/bigslide/dist/bigSlide.min.js')
-
-//- wizard JQuery
 script(src='js/utils/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')
 script(src='js/utils/jquery.validate.min.js')
-
-//- Custom JQuery
 script(src='js/utils/functions.js')
 script(src='js/utils/custom/chat.js')
-
-//- Socket IO
 script(src='http://localhost:4100/socket.io/socket.io.js')
-
-//- Agent JS
 script(src="js/agent/index.js")

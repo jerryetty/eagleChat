@@ -25,8 +25,6 @@ var $chatBox = $('.chatArea') // Chat container
 // eslint-disable-next-line no-undef
 var $newMsg = $('.new_msg') // Dummy to push new
 
-// eslint-disable-next-line no-undef
-
 // toggle chat widget using jQuery
 $chatTitle.click(function () {
   $widgetBox.slideToggle('fast')
@@ -64,11 +62,13 @@ function sendMessage () {
   // if there is a non-empty message
   $inputMessage.val('')
 
-  // Tell server to execute 'createMessage' Event with the listed parameters
-  socket.emit('clientMessage', {
+  var messageContent = {
     from: 'Client says: ',
     text: message
-  }, function () {
+  }
+
+  // Tell server to execute 'createMessage' Event with the listed parameters
+  socket.emit('clientMessage', messageContent, function () {
     // Callback
   })
 
