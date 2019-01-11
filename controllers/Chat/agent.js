@@ -19,6 +19,10 @@ module.exports = {
         '<div style="position: relative;" class="chat-list-scroll">' +
         '<div class="chat-main-content">' +
         '</div>' +
+        '<div class="old-messages">' +
+        '</div>' +
+        '<div class="new-messages">' +
+        '</div>' +
         '</div>' +
         '<div class="chat-main-footer">' +
         '<div class="d-flex flex-row align-items-center">' +
@@ -48,5 +52,17 @@ module.exports = {
     }
 
     res.render('agent', { title: 'EagleChat Agent', roomID: roomID, html: html })
+  },
+
+  tickets: function (req, res, next) {
+    res.render('agent/tickets', { title: 'EagleChat || Tickets' })
+  },
+
+  agent: function (req, res, next) {
+    res.render('agent/agent', { title: 'EagleChat || Agent' })
+  },
+
+  help: function (req, res, next) {
+    res.render('agent/help', { title: 'EagleChat || Help' })
   }
 }

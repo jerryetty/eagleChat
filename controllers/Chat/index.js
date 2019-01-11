@@ -11,6 +11,10 @@ var agents = {}
 // array that will store all rooms that are occupied
 var rooms = []
 
+// Array to store old messages that are populated when agent refreshes Window
+// [ { room: '3rXp5oEy6ijyEOlfy2Lg', message: { from: 'Agent', text: 'gukt', createdAt: 1547152988393 } } ]
+var oldMessages = []
+
 module.exports = {
   io: io.on('connection', function (socket) {
     /**
@@ -22,6 +26,8 @@ module.exports = {
 
     socket.on('initAgent', function (params) {
       updateUsersOnline()
+      getOldMessages()
+
       var name = params.name
       socket.name = name
 
@@ -31,18 +37,24 @@ module.exports = {
       agents = addToObject(agents, agent)
 
       // Checking if there are any clients online
-      // if (rooms.length > 0) {
-      //   // Looping through the rooms array. This array contains all rooms that are currently occupied by clients
-      //   for (let i = 0; i < rooms.length; i++) {
-      //     socket.join(rooms[i])
-      //   }
-      // } else {
-      //   console.log('No clients online')
-      // }
+      if (rooms.length > 0) {
+        // Looping through the rooms array. This array contains all rooms that are currently occupied by clients
+        for (let i = 0; i < rooms.length; i++) {
+          socket.join(rooms[i])
+        }
+      } else {
+        oldMessages = []
+        console.log('No clients online')
+      }
 
       socket.on('agentMessage', function (params, callback) {
-        socket.join(params.room)
+        // socket.join(params.room)
         socket.broadcast.to(params.room).emit('newMessage', generateMessage(socket.name, params.text))
+        var roomID = params.room
+        oldMessages.push({ room: roomID, message: generateMessage(socket.name, params.text) })
+        getOldMessages()
+
+        console.log(oldMessages[0].room)
       })
     })
 
@@ -71,12 +83,12 @@ module.exports = {
 
       updateUsersOnline()
 
-      console.log(clients)
-
       // Listening for new messages
       socket.on('clientMessage', function (params, callback) {
         socket.broadcast.to(socket.roomID).emit('newMessage', generateMessage(socket.name, params.text))
-        // callback('Your message was received')
+
+        oldMessages.push({ room: socket.roomID, message: generateMessage(socket.name, params.text) })
+        getOldMessages()
       })
     })
 
@@ -96,6 +108,10 @@ module.exports = {
       io.emit('usersOnline', clients)
     }
 
+    function getOldMessages () {
+      io.emit('oldMessages', oldMessages)
+    }
+
     /**
     * TODO: Add typing functionality
     */
@@ -112,9 +128,19 @@ module.exports = {
     * TODO: Remove room from occupiedRooms array
     */
     socket.on('disconnect', function () {
-      if (!socket.roomID) {
+      var roomID = socket.roomID
+      if (!roomID) {
         return
       } else {
+        for (let i = 0; i < oldMessages.length; i++) {
+          if (oldMessages[i].room === roomID) {
+            var index = oldMessages.indexOf(oldMessages[i])
+            if (index > -1) {
+              oldMessages.splice(index, i)
+            }
+            // console.log(roomID)
+          }
+        }
         delete clients[socket.roomID]
         updateUsersOnline()
       }

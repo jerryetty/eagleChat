@@ -17,8 +17,14 @@ $message.keypress(function (event) {
   }
 })
 
+// function populateOldMessages(params) {
+//   if (oldMessage.length !== 0) {
+//     var text =
+//   }
+// }
+
 function sendMessage (msg, room) {
-  var message = msg.val()
+  var newMessage = msg.val()
   var roomID = room.val()
   // TODO: Prevent markup from being injected into the message
   // message = cleanInput(message);
@@ -26,22 +32,25 @@ function sendMessage (msg, room) {
   // Clearing the message input box to accept another message
   msg.val('')
 
-  // tell server to execute 'createMessage' Event with the listed parameters
-  socket.emit('agentMessage', {
+  // Store the message content in an object
+  var messageContent = {
     from: 'Agent',
-    text: message,
+    text: newMessage,
     room: roomID
-  }, function () {
+  }
+
+  // tell server to execute 'createMessage' Event with the listed parameters
+  socket.emit('agentMessage', messageContent, function () {
     // Callback
   })
 
-  /**
-   * TODO: Append Agent's message to chat
-  */
+  // Add message to oldMessage Object
+  // console.log(oldMessage)
 
+  // Append Agent's message to chat
   // Set variables to store the inputs from the client
   var time = '8.30p'
-  var text = message
+  var text = newMessage
 
   // Append client's message to chat
   var html =
@@ -53,10 +62,13 @@ function sendMessage (msg, room) {
     '</div>'
 
   // eslint-disable-next-line no-undef
-  var $chatContainer = $('.chat-main-content')
+  var $newMessages = $('.new-messages')
 
   // eslint-disable-next-line no-undef
-  jQuery($chatContainer).append(html)
+  var $oldMessages = $('.old-messages')
+
+  // eslint-disable-next-line no-undef
+  jQuery($newMessages).append(html)
 }
 
 // Connect to the server
@@ -71,7 +83,7 @@ socket.on('connect', function () {
   // Listening for a new message from the server and displaying it in the client
   socket.on('newMessage', function (params) {
     // Set variables to store the inputs from the client
-    var time = '8.30p'
+    var time = '8.30pm'
     var text = params.text
 
     // Append client's message to chat
@@ -84,10 +96,49 @@ socket.on('connect', function () {
       '</div>'
 
     // eslint-disable-next-line no-undef
-    var $chatContainer = $('.chat-main-content')
+    var $newMessages = $('.new-messages')
 
     // eslint-disable-next-line no-undef
-    jQuery($chatContainer).append(html)
+    jQuery($newMessages).append(html)
+  })
+
+  socket.on('oldMessages', function (params) {
+    if (params.length !== 0) {
+      var html
+      for (let i = 0; i < params.length; i++) {
+        // Set variables to store the inputs from the client
+        var time = params[i].message.createdAt
+        var text = params[i].message.text
+        var from = params[i].message.from
+        var roomID = params[i].room
+      }
+
+      if (roomID === $roomID.val()) {
+        if (from === 'Agent') {
+          html =
+            '<div class="d-flex flex-nowrap chat-item flex-row-reverse"><img src="images/userAvatar/domnic-harris.jpg" alt="..." class="user-avatar"/>' +
+            '<div class="bubble">' +
+            '<div class="message">' + text + '</div>' +
+          '<div class="time"><em><small>' + time + '</small></em></div>' +
+            '</div>' +
+            '</div>'
+        } else {
+          html =
+            '<div class="d-flex flex-nowrap chat-item flex-row"><img src="images/userAvatar/domnic-harris.jpg" alt="..." class="user-avatar"/>' +
+            '<div class="bubble">' +
+            '<div class="message">' + text + '</div>' +
+            '<div class="time"><em><small>' + time + '</small></em></div>' +
+            '</div>' +
+            '</div>'
+        }
+
+        // eslint-disable-next-line no-undef
+        var $oldMessages = $('.old-messages')
+
+        // eslint-disable-next-line no-undef
+        jQuery($oldMessages).append(html)
+      }
+    }
   })
 
   socket.on('usersOnline', function (params) {
@@ -96,7 +147,7 @@ socket.on('connect', function () {
 
     for (let i = 0; i < keys.length; i++) {
       html +=
-        '<a href="agent?roomID=' + params[keys[i]].roomID + '&user=' + params[keys[i]].name + '">' +
+        '<a href="chat?roomID=' + params[keys[i]].roomID + '&user=' + params[keys[i]].name + '">' +
         '<div class="chat-user-item" id="' + params[keys[i]].roomID + '">' +
         '<div class="chat-user-row row">' +
         '<div class="chat-avatar col-2">' +
