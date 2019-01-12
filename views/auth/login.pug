@@ -1,0 +1,27 @@
+extends ../layout
+block content
+    .gx-main-container
+        .gx-main-content.ps
+            .gx-wrapper
+                .login-container.d-flex.justify-content-center.align-items-center.animated.slideInUpTiny.animation-duration-3
+                    .login-content
+                        .login-header
+                            a.site-logo(href='javascript:void(0)', title='Jambo')
+                                img(src='images/logo-color.png', alt='jambo', title='jambo')
+                        .login-form
+                            form#login-form(method='POST' action='')
+                                fieldset
+                                    .form-group
+                                        span.error !{error}
+                                    .form-group
+                                        input#email.form-control.form-control-lg(name='email', placeholder='Email', type='email')
+                                    .form-group
+                                        input#password.form-control.form-control-lg(name='password', placeholder='Password', type='password')
+                                    .form-group.text-row-between
+                                        .custom-control.custom-checkbox.mr-2
+                                            input#customControlInline.custom-control-input(type='checkbox')
+                                            label.custom-control-label(for='customControlInline') Remember me
+                                        p
+                                            a(href='forgot-password1.html', title='Reset Password') Forgot your password
+                                    button.gx-btn.gx-btn-rounded.gx-btn-primary Sign In
+            

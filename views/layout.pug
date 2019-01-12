@@ -1,7 +1,84 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='EagleChat is a support system that enables students communicate directly with University Support staff in real time')
+    meta(name='keywords', content='Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass')
+    title= title    
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')        
+    link(rel='stylesheet', href='fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')        
+    link(href='css/agent/jumbo-bootstrap.css', rel='stylesheet')        
+    link(href='js/utils/perfect-scrollbar/css/perfect-scrollbar.css', rel='stylesheet')        
+    link(href='css/agent/jumbo-forms.css', rel='stylesheet')        
+    link(href='css/agent/jumbo-core.min.css', rel='stylesheet')        
+    link#override-css-id(href='css/agent/theme-dark-indigo.css', rel='stylesheet')    
+
+.loader-backdrop
+    .loader
+        svg.circular(viewbox='25 25 50 50')
+            circle.path(cx='50', cy='50', r='20', fill='none', stroke-width='2', stroke-miterlimit='10')
+.gx-container    
+    .gx-main-container        
+        block content
+#colorSidebar.app-sidebar-content.right-sidebar
+    .color-theme
+        .color-theme-header
+            h3.color-theme-title Service Panel
+            a#close-setting-panel.action-btn(href='javascript:void(0)')
+                i.zmdi.zmdi-close.text-white
+        .color-theme-body
+            h3 Light Sidenav
+            ul.color-option
+                li
+                    a.bg-indigo.gx-theme(href='javascript:void(0)', data-theme='indigo')
+                li
+                    a.bg-cyan.gx-theme(href='javascript:void(0)', data-theme='cyan')
+                li
+                    a.bg-amber.gx-theme(href='javascript:void(0)', data-theme='amber')
+                li
+                    a.bg-deep-orange.gx-theme(href='javascript:void(0)', data-theme='deep-orange')
+                li
+                    a.bg-pink.gx-theme(href='javascript:void(0)', data-theme='pink')
+                li
+                    a.bg-blue.gx-theme(href='javascript:void(0)', data-theme='blue')
+                li
+                    a.bg-deep-purple.gx-theme(href='javascript:void(0)', data-theme='deep-purple')
+                li
+                    a.bg-green.gx-theme(href='javascript:void(0)', data-theme='green')
+            h3 Dark Sidenav
+            ul.color-option.cr-op-dark-sidebar
+                li
+                    a.bg-indigo.gx-theme(href='javascript:void(0)', data-theme='dark-indigo')
+                li
+                    a.bg-cyan.gx-theme(href='javascript:void(0)', data-theme='dark-cyan')
+                li
+                    a.bg-amber.gx-theme(href='javascript:void(0)', data-theme='dark-amber')
+                li
+                    a.bg-deep-orange.gx-theme(href='javascript:void(0)', data-theme='dark-deep-orange')
+                li
+                    a.bg-pink.gx-theme(href='javascript:void(0)', data-theme='dark-pink')
+                li
+                    a.bg-blue.gx-theme(href='javascript:void(0)', data-theme='dark-blue')
+                li
+                    a.bg-deep-purple.gx-theme(href='javascript:void(0)', data-theme='dark-deep-purple')
+                li
+                    a.bg-green.gx-theme(href='javascript:void(0)', data-theme='dark-green')
+            h3 Dark Theme
+            .material-switch
+                input#switch-dark-theme(name='switch-dark-theme', type='checkbox', data-theme='dark')
+                label.label-default(for='switch-dark-theme')
+            h3.d-none.d-lg-block Collapsible Drawer
+            .material-switch.d-none.d-lg-block
+                input#folded-sidebar(type='checkbox')
+                label.label-default(for='folded-sidebar')
+.menu-backdrop.fade
+
+script(src='js/utils/jquery/dist/jquery.min.js')
+script(src='js/utils/bootstrap/dist/js/bootstrap.bundle.min.js')
+script(src='js/utils/perfect-scrollbar/dist/perfect-scrollbar.min.js')
+script(src='js/utils/bigslide/dist/bigSlide.min.js')
+script(src='js/utils/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')
+script(src='js/utils/jquery.validate.min.js')
+script(src='js/utils/functions.js')
+script(src='js/utils/custom/chat.js')
